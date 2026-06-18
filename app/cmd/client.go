@@ -239,7 +239,7 @@ func (c *clientConfig) fillServerAddr(hyConfig *client.Config) error {
 	var err error
 	host, port, hostPort := parseServerAddrString(c.Server)
 	if !isPortHoppingPort(port) {
-		addr, err = net.ResolveUDPAddr("udp", hostPort)
+		addr, err = lookupIP4P(host, port)
 	} else {
 		addr, err = udphop.ResolveUDPHopAddr(hostPort)
 	}

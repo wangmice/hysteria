@@ -90,6 +90,7 @@ func (c *clientImpl) connect() (*HandshakeInfo, error) {
 		MaxDatagramFrameSize:           protocol.MaxDatagramFrameSize,
 		OmitMaxDatagramFrameSize:       true,
 		DisablePathManager:             true,
+		HandshakeIdleTimeout:           8*time.Second,
 	}
 	tr := &quic.Transport{Conn: pktConn}
 	// Prepare RoundTripper
